@@ -21,8 +21,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1630896713372,
+  "id": 5,
+  "iteration": 1631090693874,
   "links": [],
   "panels": [
     {
@@ -34,6 +34,13 @@
         "y": 0
       },
       "id": 17,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View full screen",
+          "url": "http://localhost:8000/d/9kzY3zI7k/scorecard-dashboard-copy?orgId=1&viewPanel=17"
+        }
+      ],
       "options": {
         "ant": {
           "color": "rgb(0, 100, 255)",
@@ -42,6 +49,10 @@
           "pulseColor": "rgb(0, 0, 0)",
           "reverse": false,
           "weight": 5
+        },
+        "coordinates": {
+          "customLatitudeColumnName": "",
+          "customLongitudeColumnName": ""
         },
         "discardZeroOrNull": true,
         "heat": {
@@ -75,13 +86,14 @@
         },
         "viewType": "marker"
       },
+      "repeat": null,
       "targets": [
         {
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT \n CONCAT(locations.name_km, ' (', count(*), ')') as popup, \n locations.latitude, \n locations.longitude,\n CONCAT(COUNT(CASE WHEN scorecards.locked_at IS NOT null THEN 1 END), '/', count(*)) as tooltip\nFROM scorecards INNER join locations\nON scorecards.province_id = locations.code\nWHERE \n scorecards.program_id=1  \n AND scorecards.scorecard_type in ($scorecard_type) \n AND scorecards.year in ($year) \n AND scorecards.facility_id in ($facility_id)\n AND scorecards.province_id in ($province_id)\ngroup by locations.name_km, locations.latitude, locations.longitude;",
+          "rawSql": "SELECT \n  CONCAT(\n    'អង្គការអនុវត្តប័ណ្ណដាក់ពិន្ទុ (', locations.name_km, ')', \n    '<ol>',\n    ARRAY_TO_STRING(array_agg(DISTINCT CONCAT('<li><a href=\"#\" target=\"_blank\">', local_ngos.name, '</a></li>')),''),\n    '</ol>'\n  ) as popup,\n  locations.latitude, \n  locations.longitude,\n  CONCAT(\n    COUNT(CASE WHEN scorecards.locked_at IS NOT null THEN 1 END), \n    '/', \n    count(*)\n  ) as tooltip\nFROM scorecards \nINNER join locations ON scorecards.province_id = locations.code\nINNER join local_ngos ON scorecards.local_ngo_id = local_ngos.id\nWHERE \n  scorecards.program_id=1\n  AND scorecards.scorecard_type in ($scorecard_type) \n  AND scorecards.year in ($year) \n  AND scorecards.facility_id in ($facility_id)\n  AND scorecards.province_id in ($province_id)\nGROUP BY \n  locations.name_km, locations.latitude, locations.longitude;",
           "refId": "A",
           "select": [
             [
@@ -105,7 +117,7 @@
           ]
         }
       ],
-      "title": "Map",
+      "title": "Scorecard Implemented Map",
       "type": "alexandra-trackmap-panel"
     },
     {
@@ -762,7 +774,7 @@
         "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
+        "label": "Province",
         "multi": false,
         "name": "province_id",
         "options": [],
