@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1642736663752,
+  "iteration": 1642751095659,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1056,13 +1056,13 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "< 15"
+              "options": "អាយុ > 45"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "green",
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -1071,22 +1071,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "15 - 30"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "31 - 45"
+              "options": "អាយុ 31 - 45"
             },
             "properties": [
               {
@@ -1101,13 +1086,28 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "> 45"
+              "options": "អាយុ 15 - 30"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "orange",
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "អាយុ< 15"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
                   "mode": "fixed"
                 }
               }
@@ -1147,10 +1147,6 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "postgres",
-            "uid": "ILWFcsAnk"
-          },
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -1201,13 +1197,13 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "យុវជន"
+              "options": "ពិការភាព"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "orange",
+                  "fixedColor": "blue",
                   "mode": "fixed"
                 }
               }
@@ -1216,13 +1212,13 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "ពិការភាព"
+              "options": "ជនជាតិដើម"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "#a352cc",
+                  "fixedColor": "green",
                   "mode": "fixed"
                 }
               }
@@ -1237,7 +1233,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "#31c0c7",
+                  "fixedColor": "yellow",
                   "mode": "fixed"
                 }
               }
@@ -1246,13 +1242,13 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "ជនជាតិភាគតិច"
+              "options": "យុវជន"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "red",
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -1266,7 +1262,7 @@
         "x": 16,
         "y": 22
       },
-      "id": 18,
+      "id": 36,
       "options": {
         "displayLabels": [
           "name",
@@ -1275,7 +1271,8 @@
         ],
         "legend": {
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "values": []
         },
         "pieType": "donut",
         "reduceOptions": {
@@ -1295,7 +1292,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "WITH par AS (\n  (\n    SELECT participants.*, 'ID Poor' as profile, 'ប័ណ្ណក្រីក្រ' as profile_km\n    FROM participants WHERE participants.poor_card is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Disability' as profile, 'ពិការភាព' as profile_km\n    FROM participants WHERE participants.disability is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Minority' as profile, 'ជនជាតិភាគតិច' as profile_km\n    FROM participants WHERE participants.minority is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Youth' as profile, 'យុវជន' as profile_km\n    FROM participants WHERE participants.youth is true\n  )\n)\n\nSELECT \n  par.profile_km, count(*)\nFROM par\nINNER JOIN scorecards ON par.scorecard_uuid = scorecards.id::varchar(255)\nWHERE \n  scorecards.program_id in (${program_id})\n  AND $__timeFilter(scorecards.conducted_date)\n  AND scorecards.facility_id in ($facility_id)\n  AND scorecards.year in ($year)\n  AND scorecards.scorecard_type in ($scorecard_type)\n  AND scorecards.province_id in ($province_id)\n  AND scorecards.local_ngo_id in ($local_ngo_id)\n  AND scorecards.deleted_at is null\n  AND scorecards.completed_at is not null\n  AND par.gender in ($gender)\n  AND par.age BETWEEN ${age:raw}\n  AND par.profile in ($profile)\nGROUP BY par.profile_km",
+          "rawSql": "WITH par AS (\n  (\n    SELECT participants.*, 'ID Poor' as profile, 'ប័ណ្ណក្រីក្រ' as profile_km\n    FROM participants WHERE participants.poor_card is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Disability' as profile, 'ពិការភាព' as profile_km\n    FROM participants WHERE participants.disability is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Minority' as profile, 'ជនជាតិដើម' as profile_km\n    FROM participants WHERE participants.minority is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Youth' as profile, 'យុវជន' as profile_km\n    FROM participants WHERE participants.youth is true\n  )\n)\n\nSELECT \n  par.profile_km, count(*)\nFROM par\nINNER JOIN scorecards ON par.scorecard_uuid = scorecards.id::varchar(255)\nWHERE \n  scorecards.program_id in (${program_id})\n  AND $__timeFilter(scorecards.conducted_date)\n  AND scorecards.facility_id in ($facility_id)\n  AND scorecards.year in ($year)\n  AND scorecards.scorecard_type in ($scorecard_type)\n  AND scorecards.province_id in ($province_id)\n  AND scorecards.local_ngo_id in ($local_ngo_id)\n  AND scorecards.deleted_at is null\n  AND scorecards.completed_at is not null\n  AND par.gender in ($gender)\n  AND par.age BETWEEN ${age:raw}\n  AND par.profile in ($profile)\nGROUP BY par.profile_km",
           "refId": "A",
           "select": [
             [
