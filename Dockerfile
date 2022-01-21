@@ -1,4 +1,4 @@
-FROM grafana/grafana:8.2.1
+FROM grafana/grafana:8.3.4
 
 LABEL maintainer="Sokly <sokly@instedd.org>"
 
