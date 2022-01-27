@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1643182861808,
+  "iteration": 1643266001938,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -262,7 +262,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "format": "table",
@@ -344,7 +344,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "format": "table",
@@ -421,7 +421,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "format": "table",
@@ -502,7 +502,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "format": "table",
@@ -1960,17 +1960,17 @@
     },
     {
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 24,
         "x": 0,
         "y": 46
       },
       "id": 11,
       "options": {
-        "content": "<div style=\"display: flex;\">\n<div style=\"display: flex;margin: 0 auto;\">\n<div style=\"text-align: center; margin-right: 20px\">\n<h5 style=\"font-size: 14px;\">គាំទ្រមូលនិធិដោយ/Funded by</h5>\n<img src=\"https://digital-csc.org/assets/eu-3902d24e7e972494ede15c7dc533bc20589ef6e80aca3335518cea5944984c09.png\"  width=\"70\"/>\n</div>\n\n<div style=\"text-align: center\">\n<h5 style=\"font-size: 14px;\">អនុវត្តដោយ/Implemented by</h5>\n<div style=\"display: flex; align-items: center; justify-content: center; margin-top: 30px;\">\n<img src=\"https://digital-csc.org/assets/care_logo-30bc7807ccb532ee750d35b55a3e94c40e688a88a18d0497c4e244bc56f4017d.png\" width=\"130\" height=\"40\" />\n<img src=\"https://digital-csc.org/assets/api-a84a9246854e6e9c471aa6982fb90ed27377b050f69318966fe0c3923d371886.png\"  width=\"55\" style=\"margin: 0 20px;\"/>\n<img src=\"https://digital-csc.org/assets/instedd-ilabsea-252db350ccbce84ff56c4057db2f6a5761873c8d7b4c9c5ee9c31049ba7d3792.png\"  width=\"180\"/>\n</div>\n</div>\n\n</div>\n</div>\n  \n<div style=\"text-align: center; padding-top: 20px; padding-bottom: 20px;\">\n  <a href=\"https://digital-csc.org/\" target=\"_blank\" >អំពីយើង/About Us</a>\n</div>\n  ",
+        "content": "<div style=\"display: flex;\">\n<div style=\"display: flex;margin: 0 auto;\">\n<div style=\"text-align: center; margin-right: 20px\">\n<h5 style=\"font-size: 14px;\">គាំទ្រមូលនិធិដោយ/Funded by</h5>\n<img src=\"https://digital-csc.org/assets/eu-3902d24e7e972494ede15c7dc533bc20589ef6e80aca3335518cea5944984c09.png\"  width=\"70\"/>\n</div>\n\n<div style=\"text-align: center; margin-top: 0\">\n<h5 style=\"font-size: 14px;\">អនុវត្តដោយ/Implemented by</h5>\n<div style=\"margin-top: 24px\">\n<img src=\"https://digital-csc.org/assets/care_logo-30bc7807ccb532ee750d35b55a3e94c40e688a88a18d0497c4e244bc56f4017d.png\" width=\"130\" height=\"40\" />\n<img src=\"https://digital-csc.org/assets/api-a84a9246854e6e9c471aa6982fb90ed27377b050f69318966fe0c3923d371886.png\"  width=\"55\" style=\"margin: 0 20px;\"/>\n<img src=\"https://digital-csc.org/assets/instedd-ilabsea-252db350ccbce84ff56c4057db2f6a5761873c8d7b4c9c5ee9c31049ba7d3792.png\"  width=\"180\" style=\"margin-top: 5px;\"/>\n</div>\n</div>\n\n</div>\n</div>\n  \n<div style=\"text-align: center;\">\n  <a href=\"https://digital-csc.org/\" target=\"_blank\" >អំពីយើង/About Us</a>\n</div>\n  ",
         "mode": "html"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "format": "time_series",
