@@ -2424,14 +2424,14 @@
             "$__all"
           ]
         },
-        "definition": "select name from local_ngos where program_id in (${program_id});",
+        "definition": "select name from local_ngos where deleted_at is null AND program_id in (${program_id});",
         "hide": 0,
         "includeAll": true,
         "label": "Local NGO",
         "multi": true,
         "name": "local_ngo_name",
         "options": [],
-        "query": "select name from local_ngos where program_id in (${program_id});",
+        "query": "select name from local_ngos where deleted_at is null AND program_id in (${program_id});",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2448,14 +2448,14 @@
             "$__all"
           ]
         },
-        "definition": "(select id AS __value  from local_ngos where name in ($local_ngo_name) AND program_id in (${program_id})) union all (select -1);",
+        "definition": "(select id AS __value  from local_ngos where name in ($local_ngo_name) AND deleted_at is null AND program_id in (${program_id})) union all (select -1);",
         "hide": 2,
         "includeAll": true,
         "label": "Local NGO",
         "multi": true,
         "name": "local_ngo_id",
         "options": [],
-        "query": "(select id AS __value  from local_ngos where name in ($local_ngo_name) AND program_id in (${program_id})) union all (select -1);",
+        "query": "(select id AS __value  from local_ngos where name in ($local_ngo_name) AND deleted_at is null AND program_id in (${program_id})) union all (select -1);",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
