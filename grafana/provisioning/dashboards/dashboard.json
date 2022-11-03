@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1659602631452,
+  "iteration": 1667379528304,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -2409,32 +2409,19 @@
             "$__all"
           ]
         },
+        "definition": "select code AS __value, name_km AS __text from program_scorecard_types where program_id in (${program_id});",
         "hide": 0,
         "includeAll": true,
         "label": "Scorecard Type",
         "multi": true,
         "name": "scorecard_type",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "Self-Assessment",
-            "value": "1"
-          },
-          {
-            "selected": false,
-            "text": "Community Scorecard",
-            "value": "2"
-          }
-        ],
-        "query": "Self-Assessment : 1,Community Scorecard : 2 ",
-        "queryValue": "",
+        "options": [],
+        "query": "select code AS __value, name_km AS __text from program_scorecard_types where program_id in (${program_id});",
+        "refresh": 1,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "custom"
+        "sort": 0,
+        "type": "query"
       },
       {
         "allValue": "0 AND 99",
@@ -2525,7 +2512,7 @@
       {
         "allValue": "'Disability', 'Minority', 'ID Poor', 'Youth', 'N/A'",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2572,7 +2559,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
