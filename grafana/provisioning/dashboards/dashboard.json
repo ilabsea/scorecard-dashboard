@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1668593525624,
+  "iteration": 1669347368420,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -2639,14 +2639,14 @@
             "$__all"
           ]
         },
-        "definition": "SELECT d.name_km FROM datasets d INNER JOIN facilities f ON d.category_id::text = f.category_id::text WHERE f.id IN ($facility_id) AND f.program_id IN (${program_id}) GROUP BY d.name_km",
+        "definition": "(SELECT d.name_km FROM datasets d INNER JOIN facilities f ON d.category_id::text = f.category_id::text WHERE f.id IN ($facility_id) AND f.program_id IN (${program_id}) GROUP BY d.name_km) union (SELECT 'មិនកំណត់')",
         "hide": 0,
         "includeAll": true,
         "label": "Institution",
         "multi": true,
         "name": "dataset_name",
         "options": [],
-        "query": "SELECT d.name_km FROM datasets d INNER JOIN facilities f ON d.category_id::text = f.category_id::text WHERE f.id IN ($facility_id) AND f.program_id IN (${program_id}) GROUP BY d.name_km",
+        "query": "(SELECT d.name_km FROM datasets d INNER JOIN facilities f ON d.category_id::text = f.category_id::text WHERE f.id IN ($facility_id) AND f.program_id IN (${program_id}) GROUP BY d.name_km) union (SELECT 'មិនកំណត់')",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2712,6 +2712,6 @@
   "timezone": "browser",
   "title": "Scorecard Dashboard",
   "uid": "hqZGKcnnk",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
