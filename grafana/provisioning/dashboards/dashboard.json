@@ -39,7 +39,7 @@
         {
           "targetBlank": false,
           "title": "View full screen",
-          "url": "http://localhost:8000/d/hqZGKcnnk/scorecard-dashboard-copy?orgId=1&viewPanel=17"
+          "url": "https://dashboard.digital-csc.org/d/hqZGKcnnk/scorecard-dashboard-copy?orgId=1&viewPanel=17"
         }
       ],
       "options": {
