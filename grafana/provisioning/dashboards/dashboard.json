@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,7 +25,6 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1669347368420,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -263,7 +265,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -345,7 +347,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -427,7 +429,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -509,7 +511,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -591,7 +593,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -673,7 +675,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "table",
@@ -715,6 +717,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -725,7 +729,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -813,12 +823,15 @@
       },
       "id": 32,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.96,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -827,9 +840,11 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "targets": [
         {
@@ -872,6 +887,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -882,7 +899,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -940,12 +963,15 @@
       },
       "id": 9,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.96,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -954,9 +980,11 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "targets": [
         {
@@ -1115,7 +1143,8 @@
         ],
         "legend": {
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "pieType": "donut",
         "reduceOptions": {
@@ -1126,7 +1155,8 @@
           "values": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1227,6 +1257,7 @@
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
+          "showLegend": true,
           "values": []
         },
         "pieType": "donut",
@@ -1238,7 +1269,8 @@
           "values": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1354,6 +1386,7 @@
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
+          "showLegend": true,
           "values": []
         },
         "pieType": "donut",
@@ -1365,7 +1398,8 @@
           "values": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1496,6 +1530,7 @@
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
+          "showLegend": true,
           "values": []
         },
         "pieType": "donut",
@@ -1507,7 +1542,8 @@
           "values": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1551,13 +1587,40 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "fillOpacity": 80,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "mappings": []
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": [
           {
@@ -1619,6 +1682,51 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ស្រី"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ប្រុស"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ផ្សេងៗ"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -1630,27 +1738,26 @@
       },
       "id": 36,
       "options": {
-        "displayLabels": [
-          "name",
-          "value",
-          "percent"
-        ],
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
         "legend": {
+          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "values": []
+          "showLegend": true
         },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": true
-        },
+        "orientation": "horizontal",
+        "showValue": "auto",
+        "stacking": "normal",
+        "text": {},
         "tooltip": {
-          "mode": "single"
-        }
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "targets": [
         {
@@ -1658,7 +1765,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "WITH par AS (\n  (\n    SELECT participants.*, 'ID Poor' as profile, 'ប័ណ្ណក្រីក្រ' as profile_km\n    FROM participants WHERE participants.poor_card is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Disability' as profile, 'ពិការភាព' as profile_km\n    FROM participants WHERE participants.disability is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Minority' as profile, 'ជនជាតិដើម' as profile_km\n    FROM participants WHERE participants.minority is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Youth' as profile, 'យុវជន' as profile_km\n    FROM participants WHERE participants.youth is true\n  )\n),\n_scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards s\n)\n\nSELECT \n  par.profile_km, count(*)\nFROM par\nINNER JOIN _scorecards s ON par.scorecard_uuid = s.id::varchar(255)\nWHERE \n  s.program_id in (${program_id})\n  AND $__timeFilter(s.conducted_date)\n  AND s.facility_id in ($facility_id)\n  AND s.year in ($year)\n  AND s.scorecard_type in ($scorecard_type)\n  AND s.province_id in ($province_id)\n  AND s.local_ngo_id in ($local_ngo_id)\n  AND s.deleted_at is null\n  AND s.completed_at is not null\n  AND par.gender in ($gender)\n  AND par.age BETWEEN ${age:raw}\n  AND par.profile in ($profile)\n  AND s.dataset_id2 in ($dataset_id)\nGROUP BY par.profile_km",
+          "rawSql": "WITH par AS (\n  (\n    SELECT participants.*, 'ID Poor' as profile, 'ប័ណ្ណក្រីក្រ' as profile_km\n    FROM participants WHERE participants.poor_card is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Disability' as profile, 'ពិការភាព' as profile_km\n    FROM participants WHERE participants.disability is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Minority' as profile, 'ជនជាតិដើម' as profile_km\n    FROM participants WHERE participants.minority is true\n  )\n  UNION ALL\n  (\n    SELECT participants.*, 'Youth' as profile, 'យុវជន' as profile_km\n    FROM participants WHERE participants.youth is true\n  )\n),\n_scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards s\n)\n\nSELECT \n  par.profile_km,\n  SUM(CASE WHEN par.gender = 'female' THEN 1 END) as \"ស្រី\",\n  SUM(CASE WHEN par.gender = 'male' THEN 1 END) as \"ប្រុស\",\n  SUM(CASE WHEN par.gender = 'other' THEN 1 END) as \"ផ្សេងៗ\"\nFROM par\nINNER JOIN _scorecards s ON par.scorecard_uuid = s.id::varchar(255)\nWHERE \n  s.program_id in (${program_id})\n  AND $__timeFilter(s.conducted_date)\n  AND s.facility_id in ($facility_id)\n  AND s.year in ($year)\n  AND s.scorecard_type in ($scorecard_type)\n  AND s.province_id in ($province_id)\n  AND s.local_ngo_id in ($local_ngo_id)\n  AND s.deleted_at is null\n  AND s.completed_at is not null\n  AND par.gender in ($gender)\n  AND par.age BETWEEN ${age:raw}\n  AND par.profile in ($profile)\n  AND s.dataset_id2 in ($dataset_id)\nGROUP BY par.profile_km\n",
           "refId": "A",
           "select": [
             [
@@ -1683,7 +1790,7 @@
         }
       ],
       "title": "អ្នកចូលរួមបែងចែកតាមលក្ខណៈសម្បតិ្ត",
-      "type": "piechart"
+      "type": "barchart"
     },
     {
       "description": "របាយការណ៍នេះរាប់បញ្ចូលតែប័ណ្ណដាក់ពិន្ទុទាំងឡាយណាដែលបានអនុវត្តរួចរាល់នៅសហគមន៍",
@@ -1693,6 +1800,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -1703,7 +1812,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -1746,12 +1861,15 @@
       },
       "id": 15,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.62,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -1760,9 +1878,11 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "pluginVersion": "8.1.2",
       "targets": [
@@ -1806,6 +1926,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -1816,7 +1938,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -1859,12 +1987,15 @@
       },
       "id": 33,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.62,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -1873,9 +2004,11 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "pluginVersion": "8.1.2",
       "targets": [
@@ -1919,6 +2052,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -1929,7 +2064,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -1972,12 +2113,15 @@
       },
       "id": 27,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.62,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -1986,13 +2130,16 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "pluginVersion": "8.1.2",
       "targets": [
         {
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -2009,6 +2156,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "locations",
           "timeColumn": "created_at",
           "timeColumnType": "timestamp",
@@ -2032,6 +2196,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -2042,7 +2208,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -2085,12 +2257,15 @@
       },
       "id": 28,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.62,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -2099,13 +2274,16 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "pluginVersion": "8.1.2",
       "targets": [
         {
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
@@ -2122,6 +2300,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "locations",
           "timeColumn": "created_at",
           "timeColumnType": "timestamp",
@@ -2145,6 +2340,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
@@ -2155,7 +2352,13 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -2198,12 +2401,15 @@
       },
       "id": 29,
       "options": {
+        "barRadius": 0,
         "barWidth": 0.62,
+        "fullHighlight": false,
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "orientation": "horizontal",
         "showValue": "auto",
@@ -2212,9 +2418,11 @@
           "valueSize": 24
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         },
-        "xTickLabelRotation": 0
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
       },
       "pluginVersion": "8.1.2",
       "targets": [
@@ -2259,10 +2467,15 @@
       },
       "id": 11,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "<div style=\"display: flex;\">\n<div style=\"display: flex;margin: 0 auto;\">\n<div style=\"text-align: center; margin-right: 20px\">\n<h5 style=\"font-size: 14px;\">គាំទ្រមូលនិធិដោយ/Funded by</h5>\n<img src=\"https://digital-csc.org/assets/eu-3902d24e7e972494ede15c7dc533bc20589ef6e80aca3335518cea5944984c09.png\"  width=\"70\"/>\n</div>\n\n<div style=\"text-align: center; margin-top: 0\">\n<h5 style=\"font-size: 14px;\">អនុវត្តដោយ/Implemented by</h5>\n<div style=\"margin-top: 24px\">\n<img src=\"https://digital-csc.org/assets/care_logo-30bc7807ccb532ee750d35b55a3e94c40e688a88a18d0497c4e244bc56f4017d.png\" width=\"130\" height=\"40\" />\n<img src=\"https://digital-csc.org/assets/api-a84a9246854e6e9c471aa6982fb90ed27377b050f69318966fe0c3923d371886.png\"  width=\"55\" style=\"margin: 0 20px;\"/>\n<img src=\"https://digital-csc.org/assets/instedd-ilabsea-252db350ccbce84ff56c4057db2f6a5761873c8d7b4c9c5ee9c31049ba7d3792.png\"  width=\"180\" style=\"margin-top: 5px;\"/>\n</div>\n</div>\n\n</div>\n</div>\n  \n<div style=\"text-align: center;\">\n  <a href=\"https://digital-csc.org/\" target=\"_blank\" >អំពីយើង/About Us</a>\n</div>\n  ",
         "mode": "html"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.1.4",
       "targets": [
         {
           "format": "time_series",
@@ -2298,14 +2511,14 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 34,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2329,7 +2542,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2353,7 +2566,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2377,7 +2590,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2401,7 +2614,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2559,7 +2772,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2583,7 +2796,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2607,7 +2820,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2631,7 +2844,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -2655,7 +2868,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
