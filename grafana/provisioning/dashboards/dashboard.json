@@ -514,11 +514,12 @@
       "pluginVersion": "10.1.4",
       "targets": [
         {
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "WITH _scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      ', ',\n      (CASE WHEN s.number_of_disability > 0 THEN 'Disability' END),\n      (CASE WHEN s.number_of_ethnic_minority > 0 THEN 'Minority' END),\n      (CASE WHEN s.number_of_youth > 0 THEN 'Youth' END),\n      (CASE WHEN s.number_of_id_poor > 0 THEN 'ID Poor' END),\n      (CASE WHEN (s.number_of_disability = 0 AND s.number_of_ethnic_minority = 0 AND s.number_of_youth = 0 AND s.number_of_id_poor = 0) THEN 'N/A' END)\n    ) as profile,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards as s\n  INNER JOIN participants as p on s.id::varchar(20) = p.scorecard_uuid\n  WHERE \n    s.program_id in (${program_id})\n    AND $__timeFilter(s.conducted_date)\n    AND s.scorecard_type in ($scorecard_type) \n    AND s.year in ($year) \n    AND s.facility_id in ($facility_id)\n    AND s.province_id in ($province_id)\n    AND s.local_ngo_id in ($local_ngo_id)\n    AND s.deleted_at is null\n    AND s.completed_at is not null\n    AND p.age BETWEEN ${age:raw}\n    AND p.gender in ($gender)\n  GROUP BY s.id\n),\n_conducted_scorecards AS (\n  SELECT s.* \n  FROM _scorecards s \n  WHERE s.dataset_id2 in ($dataset_id)\n),\n_formated_scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards s\n),\n_planned_scorecards AS (\n  SELECT\n    s.*\n  FROM _formated_scorecards AS s\n  WHERE\n    s.program_id in (${program_id})\n    AND $__timeFilter(s.created_at)\n    AND s.scorecard_type in ($scorecard_type) \n    AND s.year in ($year) \n    AND s.facility_id in ($facility_id)\n    AND s.province_id in ($province_id)\n    AND s.local_ngo_id in ($local_ngo_id)\n    AND s.deleted_at is null\n    AND s.dataset_id2 in ($dataset_id)\n),\n_total_lngo AS (\n  SELECT count(DISTINCT local_ngo_id) \n  FROM _planned_scorecards\n),\n_total_caf AS (\n  SELECT count(*) from cafs\n  WHERE local_ngo_id IN ( SELECT DISTINCT(local_ngo_id) FROM _planned_scorecards )\n),\n_total_participant AS (\n  SELECT count(*) from participants\n  WHERE scorecard_uuid::integer IN ( SELECT id FROM _conducted_scorecards )\n),\n_avg_participant AS (\n  SELECT (SELECT * from _total_participant) / (select count(*) from _conducted_scorecards)\n)\n\nSELECT \n  concat_ws (\n    ' / ',\n    (select * from _total_lngo),\n    (select * from _total_caf),\n    (select * from _total_participant),\n    (select * from _avg_participant)\n  );",
+          "rawSql": "WITH _scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      ', ',\n      (CASE WHEN s.number_of_disability > 0 THEN 'Disability' END),\n      (CASE WHEN s.number_of_ethnic_minority > 0 THEN 'Minority' END),\n      (CASE WHEN s.number_of_youth > 0 THEN 'Youth' END),\n      (CASE WHEN s.number_of_id_poor > 0 THEN 'ID Poor' END),\n      (CASE WHEN (s.number_of_disability = 0 AND s.number_of_ethnic_minority = 0 AND s.number_of_youth = 0 AND s.number_of_id_poor = 0) THEN 'N/A' END)\n    ) as profile,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards as s\n  INNER JOIN participants as p on s.id::varchar(20) = p.scorecard_uuid\n  WHERE \n    s.program_id in (${program_id})\n    AND $__timeFilter(s.conducted_date)\n    AND s.scorecard_type in ($scorecard_type) \n    AND s.year in ($year) \n    AND s.facility_id in ($facility_id)\n    AND s.province_id in ($province_id)\n    AND s.local_ngo_id in ($local_ngo_id)\n    AND s.deleted_at is null\n    AND s.completed_at is not null\n    AND p.age BETWEEN ${age:raw}\n    AND p.gender in ($gender)\n  GROUP BY s.id\n),\n_conducted_scorecards AS (\n  SELECT s.* \n  FROM _scorecards s \n  WHERE s.dataset_id2 in ($dataset_id)\n),\n_formated_scorecards AS (\n  SELECT \n    s.*,\n    concat_ws (\n      '',\n      (CASE WHEN s.dataset_id is null THEN '' END),\n      (CASE WHEN s.dataset_id is not null THEN s.dataset_id END)\n    ) AS dataset_id2\n  FROM scorecards s\n),\n_planned_scorecards AS (\n  SELECT\n    s.*\n  FROM _formated_scorecards AS s\n  WHERE\n    s.program_id in (${program_id})\n    AND $__timeFilter(s.created_at)\n    AND s.scorecard_type in ($scorecard_type) \n    AND s.year in ($year) \n    AND s.facility_id in ($facility_id)\n    AND s.province_id in ($province_id)\n    AND s.local_ngo_id in ($local_ngo_id)\n    AND s.deleted_at is null\n    AND s.dataset_id2 in ($dataset_id)\n),\n_total_lngo AS (\n  SELECT count(DISTINCT local_ngo_id) \n  FROM _planned_scorecards\n),\n_total_caf AS (\n  SELECT count(*) from cafs\n  WHERE local_ngo_id IN ( SELECT DISTINCT(local_ngo_id) FROM _planned_scorecards )\n),\n_total_participant AS (\n  SELECT count(*) from participants\n  WHERE scorecard_uuid::integer IN ( SELECT id FROM _conducted_scorecards )\n),\n_avg_participant AS (\n  SELECT COALESCE((SELECT * FROM _total_participant) / NULLIF((SELECT count(*) FROM _conducted_scorecards), 0), 0) AS avg_participant\n)\n\nSELECT \n  concat_ws (\n    ' / ',\n    (select * from _total_lngo),\n    (select * from _total_caf),\n    (select * from _total_participant),\n    (select * from _avg_participant)\n  );",
           "refId": "A",
           "select": [
             [
@@ -530,6 +531,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "locations",
           "timeColumn": "created_at",
           "timeColumnType": "timestamp",
@@ -1101,10 +1119,6 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
           "editorMode": "code",
           "format": "table",
           "group": [],
@@ -1960,7 +1974,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2085,7 +2100,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2210,7 +2226,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2353,7 +2370,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2496,7 +2514,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2602,7 +2621,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"display: flex;\">\n<div style=\"display: flex;margin: 0 auto;\">\n<div style=\"text-align: center; margin-right: 20px\">\n<h5 style=\"font-size: 14px;\">គាំទ្រមូលនិធិដោយ/Funded by</h5>\n<img src=\"https://digital-csc.org/assets/eu-3902d24e7e972494ede15c7dc533bc20589ef6e80aca3335518cea5944984c09.png\"  width=\"70\"/>\n</div>\n\n<div style=\"text-align: center; margin-top: 0\">\n<h5 style=\"font-size: 14px;\">អនុវត្តដោយ/Implemented by</h5>\n<div style=\"margin-top: 24px\">\n<img src=\"https://digital-csc.org/assets/care_logo-30bc7807ccb532ee750d35b55a3e94c40e688a88a18d0497c4e244bc56f4017d.png\" width=\"130\" height=\"40\" />\n<img src=\"https://digital-csc.org/assets/api-a84a9246854e6e9c471aa6982fb90ed27377b050f69318966fe0c3923d371886.png\"  width=\"55\" style=\"margin: 0 20px;\"/>\n<img src=\"https://digital-csc.org/assets/instedd-ilabsea-252db350ccbce84ff56c4057db2f6a5761873c8d7b4c9c5ee9c31049ba7d3792.png\"  width=\"180\" style=\"margin-top: 5px;\"/>\n</div>\n</div>\n\n</div>\n</div>\n  \n<div style=\"text-align: center;\">\n  <a href=\"https://digital-csc.org/\" target=\"_blank\" >អំពីយើង/About Us</a>\n</div>\n  ",
+        "content": "<div style=\"display: flex;\">\n<div style=\"display: flex;margin: 0 auto;\">\n<div style=\"text-align: center; margin-right: 20px\">\n<h5 style=\"font-size: 14px;\">គាំទ្រមូលនិធិដោយ/Funded by</h5>\n<img src=\"https://scorecard-stg.dojoconnect.co/assets/eu-3902d24e7e972494ede15c7dc533bc20589ef6e80aca3335518cea5944984c09.png\"  width=\"70\"/>\n</div>\n\n<div style=\"text-align: center; margin-top: 0\">\n<h5 style=\"font-size: 14px;\">អនុវត្តដោយ/Implemented by</h5>\n<div style=\"margin-top: 24px\">\n<img src=\"https://scorecard-stg.dojoconnect.co/assets/care_logo-30bc7807ccb532ee750d35b55a3e94c40e688a88a18d0497c4e244bc56f4017d.png\" width=\"130\" height=\"40\" />\n<img src=\"https://scorecard-stg.dojoconnect.co/assets/api-a84a9246854e6e9c471aa6982fb90ed27377b050f69318966fe0c3923d371886.png\"  width=\"55\" style=\"margin: 0 20px;\"/>\n<img src=\"https://scorecard-stg.dojoconnect.co/assets/instedd-ilabsea-252db350ccbce84ff56c4057db2f6a5761873c8d7b4c9c5ee9c31049ba7d3792.png\"  width=\"180\" style=\"margin-top: 5px;\"/>\n</div>\n</div>\n\n</div>\n</div>\n  \n<div style=\"text-align: center;\">\n  <a href=\"https://scorecard-stg.dojoconnect.co/\" target=\"_blank\" >អំពីយើង/About Us</a>\n</div>\n  ",
         "mode": "html"
       },
       "pluginVersion": "10.1.4",
